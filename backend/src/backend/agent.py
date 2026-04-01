@@ -10,7 +10,10 @@ from .memory import MemoryService
 from .schemas import ChatOption, ChatResponse
 from .supabase_client import SupabaseCampaignService
 
-TRAIN_CAMPAIGN_PATTERN = re.compile(r"\b(train|training)\b.*\b(campaign|campaigns)\b|\b(campaign|campaigns)\b.*\b(train|training)\b", re.IGNORECASE)
+TRAIN_CAMPAIGN_INTENT_PATTERN = re.compile(
+    r"\b(train|training)\b.*\b(campaign|campaigns)\b|\b(campaign|campaigns)\b.*\b(train|training)\b",
+    re.IGNORECASE,
+)
 
 
 class AgentService:
@@ -30,7 +33,7 @@ class AgentService:
                 metadata={"intent": "campaign_selected", "campaign_id": selected_campaign_id},
             )
 
-        if TRAIN_CAMPAIGN_PATTERN.search(message):
+        if TRAIN_CAMPAIGN_INTENT_PATTERN.search(message):
             campaigns = self.campaigns.list_campaigns()
             if not campaigns:
                 reply = "I couldn't find campaigns right now. Please check Supabase credentials/table and try again."

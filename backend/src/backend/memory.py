@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 try:
     from mem0 import Memory
-except Exception:  # pragma: no cover
+except (ImportError, ModuleNotFoundError):  # pragma: no cover
     Memory = None
 
 

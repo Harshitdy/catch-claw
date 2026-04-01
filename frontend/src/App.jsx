@@ -3,14 +3,14 @@ import './App.css'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000'
 
-function randomId(prefix) {
-  return `${prefix}-${Math.random().toString(36).slice(2, 10)}`
+function generateRandomId(prefix) {
+  return `${prefix}-${crypto.randomUUID()}`
 }
 
 function getStoredId(key, prefix) {
   const existing = localStorage.getItem(key)
   if (existing) return existing
-  const generated = randomId(prefix)
+  const generated = generateRandomId(prefix)
   localStorage.setItem(key, generated)
   return generated
 }
@@ -18,7 +18,7 @@ function getStoredId(key, prefix) {
 function App() {
   const [messages, setMessages] = useState([
     {
-      id: randomId('m'),
+      id: generateRandomId('m'),
       role: 'assistant',
       content:
         'Hi! Ask me to train your campaigns and I will fetch them as clickable options.',
@@ -37,7 +37,7 @@ function App() {
     if (!selectedCampaignId) {
       setMessages((prev) => [
         ...prev,
-        { id: randomId('m'), role: 'user', content: message, options: [] },
+        { id: generateRandomId('m'), role: 'user', content: message, options: [] },
       ])
     }
 
@@ -62,7 +62,7 @@ function App() {
       setMessages((prev) => [
         ...prev,
         {
-          id: randomId('m'),
+          id: generateRandomId('m'),
           role: 'assistant',
           content: data.reply,
           options: data.options ?? [],
@@ -72,7 +72,7 @@ function App() {
       setMessages((prev) => [
         ...prev,
         {
-          id: randomId('m'),
+          id: generateRandomId('m'),
           role: 'assistant',
           content: `Something went wrong: ${error.message}`,
           options: [],
@@ -95,7 +95,7 @@ function App() {
     setMessages((prev) => [
       ...prev,
       {
-        id: randomId('m'),
+        id: generateRandomId('m'),
         role: 'user',
         content: `Train campaign: ${option.label}`,
         options: [],
