@@ -1,0 +1,91 @@
+.app {
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.app-header p {
+  margin: 0.25rem 0 0;
+  color: #a7afc0;
+}
+
+.chat-window {
+  border: 1px solid #2e3442;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  background: #141823;
+}
+
+.bubble {
+  max-width: 85%;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  line-height: 1.4;
+}
+
+.bubble.assistant {
+  align-self: flex-start;
+  background: #222838;
+  border: 1px solid #2f3850;
+}
+
+.bubble.user {
+  align-self: flex-end;
+  background: #31406a;
+  border: 1px solid #3a4b7d;
+}
+
+.options {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.option-button {
+  border: 1px solid #4a78ff;
+  background: #1f2f5e;
+  color: #f4f7ff;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.option-button:hover {
+  background: #294184;
+}
+
+.input-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+}
+
+.input-form input,
+.input-form button {
+  border-radius: 0.6rem;
+  border: 1px solid #32384b;
+  padding: 0.75rem;
+  font: inherit;
+  background: #141823;
+  color: #f4f7ff;
+}
+
+.input-form button {
+  cursor: pointer;
+  min-width: 105px;
+  border-color: #4a78ff;
+}
