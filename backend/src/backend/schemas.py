@@ -15,6 +15,7 @@ class ChatRequest(BaseModel):
     user_id: str = Field(min_length=1, default="default-user")
     session_id: str = Field(min_length=1, default="default-session")
     selected_campaign_id: str | None = None
+    campaign_id: str | None = None
 
 
 class ChatResponse(BaseModel):

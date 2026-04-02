@@ -1,13 +1,39 @@
-:root {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #f4f7ff;
-  background-color: #0f121a;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0058cd;
+  --color-primary-dark: #377bfb;
+  --color-surface: #f7f9fb;
+  --color-surface-low: #f2f4f6;
+  --color-surface-container: #eceef0;
+  --color-surface-high: #e6e8ea;
+  --color-surface-highest: #e0e3e5;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #434656;
+  --color-outline: #737687;
+  --color-outline-variant: #c2c6d9;
+
+  --color-dark-primary: #b4c5ff;
+  --color-dark-surface: #111318;
+  --color-dark-surface-low: #191c20;
+  --color-dark-surface-container: #1d2024;
+  --color-dark-surface-high: #272a2e;
+  --color-dark-surface-highest: #323538;
+  --color-dark-on-surface: #e0e3e5;
+  --color-dark-on-surface-variant: #c2c6d9;
+  --color-dark-outline: #8d9099;
+  --color-dark-outline-variant: #434656;
+
+  --color-status-draft: #737687;
+  --color-status-active: #006443;
+  --color-status-paused: #943700;
+  --color-status-completed: #004bca;
+  --color-status-new: #004bca;
+  --color-status-contacted: #943700;
+  --color-status-qualified: #6c567f;
+  --color-status-converted: #006443;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -17,4 +43,7 @@
 body {
   margin: 0;
   min-width: 320px;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -39,3 +39,23 @@ class SupabaseCampaignService:
             if campaign_id and name:
                 campaigns.append(Campaign(id=campaign_id, name=name, status=status))
         return campaigns
+
+    def get_campaign(self, campaign_id: str) -> Campaign | None:
+        if self._client is None or not campaign_id:
+            return None
+        response = (
+            self._client.table(settings.supabase_campaign_table)
+            .select("id,name,status")
+            .eq("id", campaign_id)
+            .limit(1)
+            .execute()
+        )
+        rows = response.data or []
+        if not rows:
+            return None
+        item = rows[0]
+        cid = str(item.get("id", "")).strip()
+        name = str(item.get("name", "")).strip()
+        if not cid or not name:
+            return None
+        return Campaign(id=cid, name=name, status=item.get("status"))
